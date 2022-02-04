@@ -3,10 +3,16 @@ body{
   text-align: center;
 }
 
+
+.line-stage{
+  display: flex;
+  justify-content: center;
+}
+
 .square{
   width: 150px;
   height: 150px;
   background-color: beige;
   border: 1px solid gray;
-  display: inline-block;
 }
+
