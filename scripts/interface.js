@@ -19,7 +19,9 @@ function handleClick(element){
 
  //Agora eu consigo pegar a posição de cada item que foi clicado e passo essa posição para a regra do jogo, de modo a adicionar essa informação no board.
 
-playerMove(position) // Regra de negócio
+if(playerMove(position)){
+  setTimeout(()=>{alert('O jogo acabou - vencedor foi o Jogador: ' + playerTime)}, 20)
+} // Regra de negócio
 updatingSquareRender() //Renderização da jogada
 
 }
