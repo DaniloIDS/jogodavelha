@@ -16,3 +16,19 @@ body{
   border: 1px solid gray;
 }
 
+.square:hover{
+  cursor: pointer;
+}
+
+.o:after{
+  content: '\2B55';
+  line-height: 150px;
+  font-size: 70px;
+}
+
+.x:after{
+  content: '\274E';
+  line-height: 150px;
+  font-size: 70px;
+}
+
