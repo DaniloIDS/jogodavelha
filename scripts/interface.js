@@ -1,4 +1,4 @@
-// Observação: código de estudo, portante vai conter baastante anoteções ;D
+// Observação: código de estudo, portante vai conter baastante anotações e váaarios console.log ;D
 
 //Primeiro verificar se todos os elementos da página foram carregados
 
@@ -16,24 +16,40 @@ document.addEventListener('DOMContentLoaded', ()=>{
 })
 
 function handleClick(element){
+
  let square = element.target
  let position = square.id 
+
 
  //Agora eu consigo pegar a posição de cada item que foi clicado e passo essa posição para a regra do jogo, de modo a adicionar essa informação no board.
 
 if(playerMove(position)){
-  setTimeout(()=>{alert('O jogo acabou - vencedor foi o Jogador: ' + playerTime)}, 20)
+  setTimeout(()=>{alert('O jogo acabou - o vencedor foi o Jogador: ' + playerTime)}, 20)
 } // Regra de negócio
+
+
 updatingSquareRender(position) //Renderização da jogada
 
 }
 
 
 function updatingSquareRender(position){
+
   let renderSquare = document.getElementById(position.toString())
-  let sqSymbol = board[position]
-  if (sqSymbol != ''){
+  console.log(renderSquare)
+
+  if (renderSquare === null){return} // Foram 3 horas para entender que precisava dessa linha.
+
+  if (renderSquare.childElementCount < 1){
+    
+    let sqSymbol = board[position]
+
+    console.log('board position ' + board[position])
+
+    
+    if (sqSymbol != '') {
     renderSquare.innerHTML = `<div class="${sqSymbol}"></div>`
+    }
   }
 }
 
@@ -51,6 +67,21 @@ function updatingSquareRender(position){
     
 //   })
 // }
+
+
+function resetar(){
+  console.log("você me clicou")
+  for(let i = 0; i < board.length; i++){
+    board[i] = ""
+    gamerOver = false
+    playerTime = 0
+    let cleanSquares = document.getElementById(i.toString())
+
+    if (cleanSquares.childElementCount > 0){
+    cleanSquares.children[0].remove('div')
+    }
+  }
+}
 
 
 // 💡 NodeList: pode ser vivo ou estático, se trata de coleções dos elementos DOM obtidos.
