@@ -1,3 +1,5 @@
+// Observação: código de estudo, portante vai conter baastante anoteções ;D
+
 //Primeiro verificar se todos os elementos da página foram carregados
 
 //Se carregados, pegar todos os squares
@@ -22,23 +24,33 @@ function handleClick(element){
 if(playerMove(position)){
   setTimeout(()=>{alert('O jogo acabou - vencedor foi o Jogador: ' + playerTime)}, 20)
 } // Regra de negócio
-updatingSquareRender() //Renderização da jogada
+updatingSquareRender(position) //Renderização da jogada
 
 }
 
-function updatingSquareRender(){
-  let squares = document.querySelectorAll('.square')
+
+function updatingSquareRender(position){
+  let renderSquare = document.getElementById(position.toString())
+  let sqSymbol = board[position]
+  if (sqSymbol != ''){
+    renderSquare.innerHTML = `<div class="${sqSymbol}"></div>`
+  }
+}
+
+/* VERSÃO ANTERIOR  A REFATORAÇÃO */
+// function updatingSquareRender(){
+//   let squares = document.querySelectorAll('.square')
   
-  squares.forEach((element)=>{
-    let position = element.id
-    let sqSymbol = board[position]
+//   squares.forEach((element)=>{
+//     let position = element.id
+//     let sqSymbol = board[position]
 
-    if (sqSymbol != ''){
-      element.innerHTML = `<div class="${sqSymbol}"></div>`
-    }
+//     if (sqSymbol != ''){
+//       element.innerHTML = `<div class="${sqSymbol}"></div>`
+//     }
     
-  })
-}
+//   })
+// }
 
 
 // 💡 NodeList: pode ser vivo ou estático, se trata de coleções dos elementos DOM obtidos.
